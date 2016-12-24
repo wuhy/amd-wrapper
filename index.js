@@ -145,10 +145,25 @@ function transformRequirePath(content, options) {
  * @param {Array.<string>=} options.extensions array of file extensions to search
  *        the require module in order, by default, ['.js']
  * @param {boolean=} options.debug whether to output resolve fail module info
+ * @param {boolean=} options.checkUMD whether check `UMD` module style,
+ *        if the code exists `UMD` define, the transform will ignore, by default false
  * @return {string}
  */
 function transformToAMD(code, options) {
     if (!/^\s*define\s*\(\s*/.test(code)) {
+
+        if (options && options.checkUMD) {
+            // remove comment
+            var tmp = code.replace(/(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/mg, '');
+            // check whether has umd definition
+            if (/\Wdefine\s*\(/.test(tmp)
+                && /typeof\s+define\s+===\s+(['"])function\1\s+&&\s+define\.amd/.test(tmp)
+            ) {
+                return code;
+            }
+        }
+
+
         if (options && options.resolveRequire) {
             code = transformRequirePath(
                 code, options
