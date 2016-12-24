@@ -51,5 +51,8 @@ result = amdWrap('code', { // resolve require id
 
 * options.extensions `Array.<string>` `optional`: array of file extensions to search the require module in order, by default, `['.js']`
 
+* checkUMD `boolean` `optional`: whether check `UMD` module style, if the code exists `UMD` define, the transform will ignore, by default `false`
+
 * options.debug `boolean` `optional`: whether to output resolve fail module info, by default `false`
+
 
