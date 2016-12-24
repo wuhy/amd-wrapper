@@ -1,0 +1,25 @@
+{
+  "name": "amd-wrapper",
+  "version": "0.1.0",
+  "description": "The AMD wrapper for CommonJS files",
+  "main": "index.js",
+  "keywords": [
+    "amd",
+    "commonjs"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wuhy/amd-wrapper.git"
+  },
+  "bugs": {
+    "url": "http://github.com/wuhy/amd-wrapper/issues"
+  },
+  "author": "wuhy <sparklewhy@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "resolve": "^1.2.0"
+  }
+}
