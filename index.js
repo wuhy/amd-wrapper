@@ -120,7 +120,7 @@ function transformRequirePath(content, options) {
                 }, options);
             }
             catch (ex) {
-                debug && fis.log.warn('resolve %s in %s fail', requireId, filePath);
+                debug && console.warn('resolve %s in %s fail', requireId, filePath);
 
                 // ignore resolve
                 return match;
