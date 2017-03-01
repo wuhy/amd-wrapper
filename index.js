@@ -150,10 +150,11 @@ function transformRequirePath(content, options) {
  * @return {string}
  */
 function transformToAMD(code, options) {
-    if (!/^\s*define\s*\(\s*/.test(code)) {
+    // remove comment
+    var tmp = code.replace(/(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/mg, '');
+
+    if (!/^\s*define\s*\(\s*/.test(tmp)) {
         if (options && options.checkUMD) {
-            // remove comment
-            var tmp = code.replace(/(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/mg, '');
             // check whether has umd definition
             if (/\Wdefine\s*\(/.test(tmp)
                 && /\Wdefine\.amd\W/.test(tmp)
